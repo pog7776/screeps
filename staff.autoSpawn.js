@@ -18,7 +18,7 @@ var autoSpawn = {
     }
 
 //unit types
-var unitTypesString = ['harvesters','harvester1', 'upgraders', 'builders'];
+var unitTypesString = ['harvesters','harvester1', 'upgraders', 'upgraders1', 'builders', 'builders1'];
 
 //main spawner
 var mainSpawn = Game.spawns['Spawn1'];
@@ -27,7 +27,11 @@ var mainSpawn = Game.spawns['Spawn1'];
 
 var numHarvesters = 3;
 var numHarvesters1 = 3;
+
 var numUpgraders = 5;
+var numUpgraders1 = 5;
+
+var numBuilders = 3;
 var numBuilders = 3;
 
 //Control level of creeps------------------------------------------------------------------------
@@ -83,6 +87,21 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             }
         }
 
+    //long range
+        var builders1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder1');
+
+        if(builders1.length < numBuilders1 && !mainSpawn.spawning) {
+            var newName = 'Builder-Long' + Game.time;
+            console.log('Attempting to spawn new builder-long: ' + newName);
+            if(mainSpawn.spawnCreep(currentLevel, newName, 
+                {memory: {role: 'builder1'}}) == -6){
+                console.log('Not Enough Energy');
+            }
+            else{
+                console.log(newName + ' spawning');
+            }        
+        }
+
 //upgraders---------------------------------------------------------------------------------------
         var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
         //console.log('Upgraders: ' + upgraders.length);
@@ -97,6 +116,21 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             else{
                 console.log(newName + ' spawning');
             }       
+        }
+
+    //long range
+        var upgraders1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader1');
+
+        if(upgraders1.length < numUpgraders1 && !mainSpawn.spawning) {
+            var newName = 'Upgrader-Long' + Game.time;
+            console.log('Attempting to spawn new upgrader-long: ' + newName);
+            if(mainSpawn.spawnCreep(currentLevel, newName, 
+                {memory: {role: 'upgrader1'}}) == -6){
+                console.log('Not Enough Energy');
+            }
+            else{
+                console.log(newName + ' spawning');
+            }        
         }
 
 //harvesters---------------------------------------------------------------------------------------
@@ -133,7 +167,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
 //Displays---------------------------------------------------------------
 
 //unit types
-var unitTypes = [harvesters, harvesters1, upgraders, builders];
+var unitTypes = [harvesters, harvesters1, upgraders, upgraders1, builders, builders1];
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
