@@ -50,10 +50,10 @@ var level2 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             }
         }
     }
-    
-    //current worker level
-    var currentLevel = level1; // TEMPORARY!!!
-    //console.log(currentLevel);
+
+    // !!! override current worker level !!!
+    var currentLevel = level1;
+        //console.log(currentLevel);
 
 //Healer creeps----------------------------------------------------------------------------------
 //healer creep presets
