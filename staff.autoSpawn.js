@@ -26,6 +26,7 @@ var mainSpawn = Game.spawns['Spawn1'];
 //control number of units--------------------------------------------------------------------------
 
 var numHarvesters = 3;
+var numHarvesters1 = 3;
 var numUpgraders = 5;
 var numBuilders = 3;
 
