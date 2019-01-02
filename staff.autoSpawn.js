@@ -9,7 +9,7 @@
 var autoSpawn = {
     run: function(creep) {
 
-    //clear name memory
+//clear name memory
     for(var name in Memory.creeps) {
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
@@ -17,57 +17,120 @@ var autoSpawn = {
         }
     }
 
+//unit types
+var unitTypesString = ['harvesters', 'upgraders', 'builders'];
 
-//harvesters---------------------------------------------------------------------------------------
-        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-        console.log('Harvesters: ' + harvesters.length);
+//main spawner
+var mainSpawn = Game.spawns['Spawn1'];
 
-        if(harvesters.length < 2 && !Game.spawns['Spawn1'].spawning) {
-            var newName = 'Harvester' + Game.time;
-            console.log('Spawning new harvester: ' + newName);
-            Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
-                {memory: {role: 'harvester'}});        
+//control number of units--------------------------------------------------------------------------
+
+var numHarvesters = 3;
+var numUpgraders = 5;
+var numBuilders = 3;
+
+//Control level of creeps------------------------------------------------------------------------
+
+var level1 = [WORK,CARRY,MOVE];
+var level2 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
+
+var levels = [level1, level2];
+
+for(var name in Game.rooms) {
+    for (var i = levels.length - 1; i >= 0; i--) {
+        if(Game.rooms[name].controller.level == i){
+            var currentLevel = levels[i];
+        }
+        else{
+            var currentLevel = levels.length-1;
+        }
+    }
+}
+
+//builders---------------------------------------------------------------------------------------
+        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+        //console.log('Builders: ' + builders.length);
+
+        if(builders.length < numBuilders && !mainSpawn.spawning) {
+            var newName = 'Builder' + Game.time;
+            console.log('Attempting to spawn new builder: ' + newName);
+            if(mainSpawn.spawnCreep([WORK,CARRY,MOVE], newName, 
+                {memory: {role: 'builder'}}) == -6){
+                console.log('Not Enough Energy');
+            }
+            else{
+                console.log(newName + ' spawning');
+            }
         }
 
 //upgraders---------------------------------------------------------------------------------------
         var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-        console.log('Upgraders: ' + upgraders.length);
+        //console.log('Upgraders: ' + upgraders.length);
 
-        if(upgraders.length < 5 && !Game.spawns['Spawn1'].spawning) {
+        if(upgraders.length < numUpgraders && !mainSpawn.spawning) {
             var newName = 'Upgrader' + Game.time;
-            console.log('Spawning new upgrader: ' + newName);
-            Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
-                {memory: {role: 'upgrader'}});        
+            console.log('Attempting to spawn new upgrader: ' + newName);
+            if(mainSpawn.spawnCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], newName, 
+                {memory: {role: 'upgrader'}}) == -6){
+                console.log('Not Enough Energy');
+            }
+            else{
+                console.log(newName + ' spawning');
+            }       
         }
 
-//builders---------------------------------------------------------------------------------------
-        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-        console.log('Builders: ' + builders.length);
+//harvesters---------------------------------------------------------------------------------------
+        var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+        //console.log('Harvesters: ' + harvesters.length);
 
-        if(builders.length < 2 && !Game.spawns['Spawn1'].spawning) {
-            var newName = 'Builder' + Game.time;
-            console.log('Spawning new builder: ' + newName);
-            Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName, 
-                {memory: {role: 'builder'}});        
+        if(harvesters.length < numHarvesters && !mainSpawn.spawning) {
+            var newName = 'Harvester' + Game.time;
+            console.log('Attempting to spawn new harvester: ' + newName);
+            if(mainSpawn.spawnCreep([WORK,CARRY,MOVE], newName, 
+                {memory: {role: 'harvester'}}) == -6){
+                console.log('Not Enough Energy');
+            }
+            else{
+                console.log(newName + ' spawning');
+            }        
         }
 
+//Displays---------------------------------------------------------------
 
-            //announce spawning
+//unit types
+var unitTypes = [harvesters, upgraders, builders];
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+//announce spawning
     //**move to own "spawnner" script
-        if(Game.spawns['Spawn1'].spawning) { 
-            var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
-            Game.spawns['Spawn1'].room.visual.text(
+        if(mainSpawn.spawning) { 
+            var spawningCreep = Game.creeps[mainSpawn.spawning.name];
+            mainSpawn.room.visual.text(
                 '🛠️' + spawningCreep.memory.role,
-                Game.spawns['Spawn1'].pos.x + 1, 
-                Game.spawns['Spawn1'].pos.y, 
+                mainSpawn.pos.x + 1, 
+                mainSpawn.pos.y, 
                     {align: 'left', opacity: 0.8});
         }
-        else{
-            Game.spawns['Spawn1'].room.visual.text(
-                'Harvesters: ' + harvesters.length + ', ' + 'Upgraders: ' + upgraders.length + ', ' + 'Builders: ' + builders.length,
-                Game.spawns['Spawn1'].pos.x -8, 
-                Game.spawns['Spawn1'].pos.y, 
-                    {font: 0.4, align: 'left', opacity: 1});
+        
+//display unit numbers
+        for (var i = unitTypes.length - 1; i >= 0; i--) {
+            mainSpawn.room.visual.text(
+                capitalizeFirstLetter(unitTypesString[i]) + ': ' + unitTypes[i].length,
+                mainSpawn.pos.x -6, 
+                mainSpawn.pos.y+(i/1.8)-0.3, 
+                    {font: 0.5, align: 'left', opacity: 1});
+        }
+        
+//display avaliable energy
+        for(var name in Game.rooms) {
+            mainSpawn.room.visual.text(
+                Game.rooms[name].energyAvailable,
+                mainSpawn.pos.x, 
+                mainSpawn.pos.y-1.5, 
+                    {font: 0.5, align: 'center', opacity: 1});
         }
     }
 }

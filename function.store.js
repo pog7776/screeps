@@ -2,14 +2,24 @@ var storeCreep = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-        
-        var storage = Game.flags['Storage'].pos;
+       
+        if(Game.flags['Storage']){
+        	var storage = Game.flags['Storage'].pos;
+    	}
+    	else{
+    		console.log('Place flag "Storage" to store creeps');
+    		return 'No Flag';
+    	}
+
+        if(creep.memory.store == false){
+	    	console.log('Putting ' + creep.name + ' in storage');
+	    	creep.memory.store = true;
+	    }
         
         if(creep.pos != storage){
 	        creep.moveTo(storage, {visualizePathStyle: {stroke: '#ff5555'}});
 	        creep.say('💤');
-	        console.log('Putting ' + creep.name + ' in storage');
-	    }           
+	    }
     }
 };
 module.exports = storeCreep;

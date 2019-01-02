@@ -23,6 +23,7 @@ var roleHarvester = {
                 if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
+                creep.memory.store = false;
             }   //Put creep in storage
             else if(!targets.length){
                 storeCreep.run(creep);
