@@ -3,7 +3,7 @@ var roleUpgrader = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        if(creep.room != creep.memory.home){
+        if(creep.room.controller.id != creep.memory.home){
             creep.moveTo(Game.getObjectById(creep.memory.home));
             console.log(creep.name + ' room ' + creep.room +' home ' + creep.memory.home);
         }
