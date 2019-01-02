@@ -8,7 +8,7 @@ var roleHarvester1 = {
         if(creep.room != creep.memory.home){
             creep.moveTo(creep.memory.home);
         }
-        else{
+        else if(creep.memory.home == undefined){
             creep.memory.home = creep.room.controller.id;
         }
 

@@ -8,7 +8,7 @@ var roleBuilder = {
     	if(creep.room.controller.id != creep.memory.home){
             creep.moveTo(Game.getObjectById(creep.memory.home));
         }
-        else{
+        else if(creep.memory.home == undefined){
             creep.memory.home = creep.room.controller.id;//creep.room;
         }
 

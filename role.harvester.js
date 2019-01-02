@@ -9,7 +9,7 @@ var roleHarvester = {
             creep.moveTo(Game.getObjectById(creep.memory.home));
             console.log(creep.name + ' current ' + creep.room.controller.id +' home ' + creep.memory.home);
         }
-        else{
+        else if(creep.memory.home == undefined){
             creep.memory.home = creep.room.controller.id;//creep.room;
             console.log(creep.name + ' current ' + creep.room.controller.id +' home ' + creep.memory.home);
         }
