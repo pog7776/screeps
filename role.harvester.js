@@ -11,7 +11,7 @@ var roleHarvester = {
         }
         else{
             creep.memory.home = creep.room.controller.id;//creep.room;
-             console.log(creep.name + ' current ' + creep.room.controller.id +' home ' + creep.memory.home);
+            console.log(creep.name + ' current ' + creep.room.controller.id +' home ' + creep.memory.home);
         }
 
         if(creep.carry.energy < creep.carryCapacity) {
