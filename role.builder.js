@@ -15,6 +15,9 @@ var roleBuilder = {
 	        creep.memory.building = true;
 	        creep.say('🚧 build');
 	    }
+	    else{
+	    	creep.memory.building = false;
+	    }
 
 	    //Put creep in storage
 	    if(!targets.length){

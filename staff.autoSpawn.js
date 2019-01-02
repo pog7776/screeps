@@ -31,19 +31,29 @@ var numBuilders = 3;
 
 //Control level of creeps------------------------------------------------------------------------
 
+//worker creep presets
 var level1 = [WORK,CARRY,MOVE];
 var level2 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
 
-var levels = [level1, level2];
+    //worker creep levels
+    var levels = [level1, level2];
+
+    //current worker level
+    var currentLevel = level1;
+
+//healer creep presets
+
+//battle creep presets
 
 for(var name in Game.rooms) {
     for (var i = levels.length - 1; i >= 0; i--) {
         if(Game.rooms[name].controller.level == i){
-            var currentLevel = levels[i];
+            currentLevel = levels[i];
         }
         else{
-            var currentLevel = levels.length-1;
+            currentLevel = levels[levels.length-1];
         }
+        //console.log(currentLevel);
     }
 }
 
@@ -70,7 +80,7 @@ for(var name in Game.rooms) {
         if(upgraders.length < numUpgraders && !mainSpawn.spawning) {
             var newName = 'Upgrader' + Game.time;
             console.log('Attempting to spawn new upgrader: ' + newName);
-            if(mainSpawn.spawnCreep([WORK,WORK,CARRY,CARRY,MOVE,MOVE], newName, 
+            if(mainSpawn.spawnCreep(currentLevel, newName, 
                 {memory: {role: 'upgrader'}}) == -6){
                 console.log('Not Enough Energy');
             }
