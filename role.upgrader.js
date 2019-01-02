@@ -5,6 +5,7 @@ var roleUpgrader = {
 
         if(creep.room != creep.memory.home){
             creep.moveTo(creep.memory.home);
+            console.log(creep.room + creep.memory.home);
         }
         else{
             creep.memory.home = creep.room.controller.id;
