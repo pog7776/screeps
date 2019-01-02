@@ -42,7 +42,7 @@ var autoSpawn = {
 
 //upgraders---------------------------------------------------------------------------------------
         var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-        console.log('Upgraders: ' + upgrader.length);
+        console.log('Upgraders: ' + upgraders.length);
 
         if(upgraders.length < 2) {
             var newName = 'Upgrader' + Game.time;
