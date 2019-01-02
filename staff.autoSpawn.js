@@ -28,7 +28,7 @@ var mainSpawn = Game.spawns['Spawn1'];
 var numHarvesters = 0;//3;
 var numHarvesters1 = 3;
 
-var numUpgraders = 1;//5;
+var numUpgraders = 2;//5;
 var numUpgraders1 = 5;
 
 var numBuilders = 1;//3;
