@@ -34,10 +34,11 @@ var numBuilders = 3;
 //Worker creeps----------------------------------------------------------------------------------
 //worker creep presets
 var level1 = [WORK,CARRY,MOVE];
-var level2 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
+var level2 = [WORK,CARRY,CARRY,MOVE,MOVE];
+var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
 
     //worker creep levels
-    var levels = [level1, level2];
+    var levels = [level1, level2, level3];
 
     //worker level setter
     for(var name in Game.rooms) {
@@ -52,7 +53,7 @@ var level2 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
     }
 
     // !!! override current worker level !!!
-    var currentLevel = level1;
+    //var currentLevel = level1;
         //console.log(currentLevel);
 
 //Healer creeps----------------------------------------------------------------------------------
