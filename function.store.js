@@ -18,7 +18,7 @@ var storeCreep = {
         
         if(creep.pos != storage){
 	        creep.moveTo(storage, {visualizePathStyle: {stroke: '#ff5555'}});
-	        creep.say('💤');
+	        creep.say('z');//💤
 	    }
     }
 };

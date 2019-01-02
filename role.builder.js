@@ -9,11 +9,11 @@ var roleBuilder = {
 
 	    if(creep.memory.building && creep.carry.energy == 0 && !targets.length) {
             creep.memory.building = false;
-            creep.say('🔄 harvest');
+            creep.say('harvest'); //🔄
 	    }
 	    if(!creep.memory.building && creep.carry.energy == creep.carryCapacity && targets.length) {
 	        creep.memory.building = true;
-	        creep.say('🚧 build');
+	        creep.say('build'); //🚧
 	    }
 	    else{
 	    	creep.memory.building = false;
