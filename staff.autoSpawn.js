@@ -79,7 +79,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             var newName = 'Builder' + Game.time;
             console.log('Attempting to spawn new builder: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
-                {memory: {role: 'builder'}}) == -6){
+                {memory: {role: 'builder', home: creep.room.controller.id}}) == -6){
                 console.log('Not Enough Energy');
             }
             else{
@@ -94,7 +94,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             var newName = 'Builder-Long' + Game.time;
             console.log('Attempting to spawn new builder-long: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
-                {memory: {role: 'builder1'}}) == -6){
+                {memory: {role: 'builder1', home: creep.room.controller.id}}) == -6){
                 console.log('Not Enough Energy');
             }
             else{
@@ -110,7 +110,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             var newName = 'Upgrader' + Game.time;
             console.log('Attempting to spawn new upgrader: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
-                {memory: {role: 'upgrader'}}) == -6){
+                {memory: {role: 'upgrader', home: creep.room.controller.id}}) == -6){
                 console.log('Not Enough Energy');
             }
             else{
@@ -125,7 +125,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             var newName = 'Upgrader-Long' + Game.time;
             console.log('Attempting to spawn new upgrader-long: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
-                {memory: {role: 'upgrader1'}}) == -6){
+                {memory: {role: 'upgrader1', home: creep.room.controller.id}}) == -6){
                 console.log('Not Enough Energy');
             }
             else{
@@ -141,7 +141,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             var newName = 'Harvester' + Game.time;
             console.log('Attempting to spawn new harvester: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
-                {memory: {role: 'harvester'}}) == -6){
+                {memory: {role: 'harvester', home: creep.room.controller.id}}) == -6){
                 console.log('Not Enough Energy');
             }
             else{
@@ -156,7 +156,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             var newName = 'Harvester-Long' + Game.time;
             console.log('Attempting to spawn new harvester-long: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
-                {memory: {role: 'harvester1'}}) == -6){
+                {memory: {role: 'harvester1', home: creep.room.controller.id}}) == -6){
                 console.log('Not Enough Energy');
             }
             else{

@@ -3,6 +3,10 @@ var roleUpgrader1 = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
+        if(Creep.room != creep.memory.home){
+            moveTo(creep.memory.home);
+        }
+
         if(creep.memory.upgrading && creep.carry.energy == 0) {
             creep.memory.upgrading = false;
             creep.say('harvest');//🔄

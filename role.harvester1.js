@@ -5,6 +5,10 @@ var roleHarvester1 = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
+        if(Creep.room != creep.memory.home){
+            moveTo(creep.memory.home);
+        }
+
         if(creep.carry.energy < creep.carryCapacity) {
             var sources = creep.room.find(FIND_SOURCES);
             if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
