@@ -149,7 +149,7 @@ function capitalizeFirstLetter(string) {
                 Game.rooms[name].energyAvailable,
                 mainSpawn.pos.x, 
                 mainSpawn.pos.y-1.5, 
-                    {font: 1, align: 'center', opacity: 1});
+                    {font: 0.5, align: 'center', opacity: 1});
         }
     }
 }
