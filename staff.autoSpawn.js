@@ -18,7 +18,7 @@ var autoSpawn = {
     }
 
 //unit types
-var unitTypesString = ['harvesters', 'upgraders', 'builders'];
+var unitTypesString = ['harvesters','harvester1', 'upgraders', 'builders'];
 
 //main spawner
 var mainSpawn = Game.spawns['Spawn1'];
@@ -113,11 +113,26 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
                 console.log(newName + ' spawning');
             }        
         }
+    //long range
+        var harvesters1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester1');
+        //console.log('Harvesters: ' + harvesters.length);
+
+        if(harvesters1.length < numHarvesters1 && !mainSpawn.spawning) {
+            var newName = 'Harvester-Long' + Game.time;
+            console.log('Attempting to spawn new harvester-long: ' + newName);
+            if(mainSpawn.spawnCreep(currentLevel, newName, 
+                {memory: {role: 'harvester1'}}) == -6){
+                console.log('Not Enough Energy');
+            }
+            else{
+                console.log(newName + ' spawning');
+            }        
+        }
 
 //Displays---------------------------------------------------------------
 
 //unit types
-var unitTypes = [harvesters, upgraders, builders];
+var unitTypes = [harvesters, harvesters1, upgraders, builders];
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
