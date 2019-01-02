@@ -5,12 +5,12 @@ var roleBuilder1 = {
     /** @param {Creep} creep **/
     run: function(creep) {
 
-        // if(Creep.room != creep.memory.home){
-        //     moveTo(creep.memory.home);
-        // }
-        // else{
-        //     creep.memory.home = creep.room.controller.id;
-        // }
+       if(creep.room != creep.memory.home){
+            creep.moveTo(creep.memory.home);
+        }
+        else{
+            creep.memory.home = creep.room.controller.id;
+        }
 
     	var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
 
