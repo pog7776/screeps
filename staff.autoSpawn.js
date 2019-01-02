@@ -18,7 +18,7 @@ var autoSpawn = {
     }
 
 //unit types
-var unitTypesString = ['harvesters','harvester1', 'upgraders', 'upgraders1', 'builders', 'builders1'];
+var unitTypesString = ['harvesters','harvestersLong', 'upgraders', 'upgradersLong', 'builders', 'buildersLong'];
 
 //main spawner
 var mainSpawn = Game.spawns['Spawn1'];
@@ -88,9 +88,9 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
         }
 
     //long range
-        var builders1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder1');
+        var buildersLong = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder1');
 
-        if(builders1.length < numBuilders1 && !mainSpawn.spawning) {
+        if(buildersLong.length < numBuilders1 && !mainSpawn.spawning) {
             var newName = 'Builder-Long' + Game.time;
             console.log('Attempting to spawn new builder-long: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
@@ -119,9 +119,9 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
         }
 
     //long range
-        var upgraders1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader1');
+        var upgradersLong = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader1');
 
-        if(upgraders1.length < numUpgraders1 && !mainSpawn.spawning) {
+        if(upgradersLong.length < numUpgraders1 && !mainSpawn.spawning) {
             var newName = 'Upgrader-Long' + Game.time;
             console.log('Attempting to spawn new upgrader-long: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
@@ -149,10 +149,10 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
             }        
         }
     //long range
-        var harvesters1 = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester1');
+        var harvestersLong = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester1');
         //console.log('Harvesters: ' + harvesters.length);
 
-        if(harvesters1.length < numHarvesters1 && !mainSpawn.spawning) {
+        if(harvestersLong.length < numHarvesters1 && !mainSpawn.spawning) {
             var newName = 'Harvester-Long' + Game.time;
             console.log('Attempting to spawn new harvester-long: ' + newName);
             if(mainSpawn.spawnCreep(currentLevel, newName, 
@@ -167,7 +167,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
 //Displays---------------------------------------------------------------
 
 //unit types
-var unitTypes = [harvesters, harvesters1, upgraders, upgraders1, builders, builders1];
+var unitTypes = [harvesters, harvestersLong, upgraders, upgradersLong, builders, buildersLong];
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
