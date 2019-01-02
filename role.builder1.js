@@ -8,6 +8,9 @@ var roleBuilder1 = {
         if(Creep.room != creep.memory.home){
             moveTo(creep.memory.home);
         }
+        else{
+            creep.memory.home = creep.room.controller.id;
+        }
 
     	var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
 

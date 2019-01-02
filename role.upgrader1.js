@@ -6,6 +6,9 @@ var roleUpgrader1 = {
         if(Creep.room != creep.memory.home){
             moveTo(creep.memory.home);
         }
+        else{
+            creep.memory.home = creep.room.controller.id;
+        }
 
         if(creep.memory.upgrading && creep.carry.energy == 0) {
             creep.memory.upgrading = false;

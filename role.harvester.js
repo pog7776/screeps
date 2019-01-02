@@ -8,6 +8,9 @@ var roleHarvester = {
         if(Creep.room != creep.memory.home){
             moveTo(creep.memory.home);
         }
+        else{
+            creep.memory.home = creep.room.controller.id;
+        }
 
         if(creep.carry.energy < creep.carryCapacity) {
             var sources = creep.room.find(FIND_SOURCES);
