@@ -9,7 +9,7 @@ var roleBuilder1 = {
             creep.moveTo(Game.getObjectById(creep.memory.home));
         }
         else if(creep.memory.home == undefined){
-            creep.memory.home = creep.room.controller.id;//creep.room;
+            creep.memory.home = '5bbcafbe9099fc012e63b192';//creep.room;
         }
 
     	var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
