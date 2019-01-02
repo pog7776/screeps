@@ -1,10 +1,11 @@
+var storeCreep = require('function.store');
+
 var roleBuilder = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
 
     	var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-    	var storage = Game.flags['Storage'].pos;
 
 	    if(creep.memory.building && creep.carry.energy == 0 && !targets.length) {
             creep.memory.building = false;
@@ -16,11 +17,9 @@ var roleBuilder = {
 	    }
 
 	    //Put creep in storage
-	    if(!targets.length){// && creep.carry.energy == creep.carryCapacity){
+	    if(!targets.length){
             creep.memory.building = false;
-            creep.moveTo(storage, {visualizePathStyle: {stroke: '#ff5555'}});
-            creep.say('💤');
-            console.log('Putting ' + creep.name + ' in storage');
+            storeCreep.run(creep);
         }
 
 	    if(creep.memory.building) {

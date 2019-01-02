@@ -1,9 +1,9 @@
+var storeCreep = require('function.store');
+
 var roleHarvester = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-
-        var storage = Game.flags['Storage'].pos;
 
         if(creep.carry.energy < creep.carryCapacity) {
             var sources = creep.room.find(FIND_SOURCES);
@@ -24,10 +24,8 @@ var roleHarvester = {
                     creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
                 }
             }   //Put creep in storage
-            else if(!targets.length && creep.pos != storage){
-                creep.moveTo(storage, {visualizePathStyle: {stroke: '#ff5555'}});
-                creep.say('💤');
-                console.log('Putting ' + creep.name + ' in storage');
+            else if(!targets.length){
+                storeCreep.run(creep);
             }
         }
     }
