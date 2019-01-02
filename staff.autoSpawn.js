@@ -25,13 +25,13 @@ var mainSpawn = Game.spawns['Spawn1'];
 
 //control number of units--------------------------------------------------------------------------
 
-var numHarvesters = 3;
+var numHarvesters = 0;//3;
 var numHarvesters1 = 3;
 
-var numUpgraders = 5;
+var numUpgraders = 1;//5;
 var numUpgraders1 = 5;
 
-var numBuilders = 3;
+var numBuilders = 1;//3;
 var numBuilders1 = 3;
 
 //Control level of creeps------------------------------------------------------------------------
