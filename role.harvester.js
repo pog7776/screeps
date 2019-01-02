@@ -10,7 +10,7 @@ var roleHarvester = {
             console.log(creep.name + ' current ' + creep.room.controller.id +' home ' + creep.memory.home);
         }
         else if(creep.memory.home == undefined){
-            creep.memory.home = creep.room.controller.id;//creep.room;
+            creep.memory.home = creep.room.controller.id;
             console.log(creep.name + ' current ' + creep.room.controller.id +' home ' + creep.memory.home);
         }
 
