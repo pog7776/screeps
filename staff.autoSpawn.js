@@ -32,7 +32,7 @@ var numUpgraders = 5;
 var numUpgraders1 = 5;
 
 var numBuilders = 3;
-var numBuilders = 3;
+var numBuilders1 = 3;
 
 //Control level of creeps------------------------------------------------------------------------
 
