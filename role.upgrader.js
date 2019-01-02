@@ -4,11 +4,11 @@ var roleUpgrader = {
     run: function(creep) {
 
         if(creep.room != creep.memory.home){
-            creep.moveTo(creep.memory.home);
+            creep.moveTo(Game.getObjectById(creep.memory.home));
             console.log(creep.name + ' room ' + creep.room +' home ' + creep.memory.home);
         }
         else{
-            creep.memory.home = creep.room;//creep.room.controller.id;
+            creep.memory.home = creep.room.controller.id;//creep.room;
         }
 
         if(creep.memory.upgrading && creep.carry.energy == 0) {
