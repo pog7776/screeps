@@ -58,7 +58,7 @@ var level3 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
     }
 
     // !!! override current worker level !!!
-    //var currentLevel = level1;
+    var currentLevel = level1;
         //console.log(currentLevel);
 
 //Healer creeps----------------------------------------------------------------------------------
