@@ -20,7 +20,7 @@ module.exports.loop = function () {
     for(var name in Game.rooms) {
         //console.log('Room "'+name+'" has '+Game.rooms[name].energyAvailable+' energy');
         //Game.creeps['sHarvester'].say(Game.rooms[name].energyAvailable);
-    
+    }
         //instruct creeps
         for(var name in Game.creeps) {
             var creep = Game.creeps[name];
@@ -34,5 +34,5 @@ module.exports.loop = function () {
                 roleBuilder.run(creep);
             }
         }
-    }
+    
 }
