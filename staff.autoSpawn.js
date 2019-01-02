@@ -31,6 +31,7 @@ var numBuilders = 3;
 
 //Control level of creeps------------------------------------------------------------------------
 
+//Worker creeps----------------------------------------------------------------------------------
 //worker creep presets
 var level1 = [WORK,CARRY,MOVE];
 var level2 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
@@ -38,25 +39,32 @@ var level2 = [WORK,WORK,CARRY,CARRY,MOVE,MOVE];
     //worker creep levels
     var levels = [level1, level2];
 
+    //worker level setter
+    for(var name in Game.rooms) {
+        for (var i = levels.length - 1; i >= 0; i--) {
+            if(Game.rooms[name].controller.level == i){
+                currentLevel = levels[i];
+            }
+            else{
+                currentLevel = levels[levels.length-1];
+            }
+        }
+    }
+    
     //current worker level
-    var currentLevel = level1;
+    var currentLevel = level1; // TEMPORARY!!!
+    //console.log(currentLevel);
 
+//Healer creeps----------------------------------------------------------------------------------
 //healer creep presets
 
-//battle creep presets
+//Combat creeps----------------------------------------------------------------------------------
+//close range creep presets
 
-for(var name in Game.rooms) {
-    for (var i = levels.length - 1; i >= 0; i--) {
-        if(Game.rooms[name].controller.level == i){
-            currentLevel = levels[i];
-        }
-        else{
-            currentLevel = levels[levels.length-1];
-        }
-        //console.log(currentLevel);
-    }
-}
+//long range creep presets
 
+
+//Spawn creeps-----------------------------------------------------------------------------------
 //builders---------------------------------------------------------------------------------------
         var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
         //console.log('Builders: ' + builders.length);
@@ -64,7 +72,7 @@ for(var name in Game.rooms) {
         if(builders.length < numBuilders && !mainSpawn.spawning) {
             var newName = 'Builder' + Game.time;
             console.log('Attempting to spawn new builder: ' + newName);
-            if(mainSpawn.spawnCreep([WORK,CARRY,MOVE], newName, 
+            if(mainSpawn.spawnCreep(currentLevel, newName, 
                 {memory: {role: 'builder'}}) == -6){
                 console.log('Not Enough Energy');
             }
@@ -96,7 +104,7 @@ for(var name in Game.rooms) {
         if(harvesters.length < numHarvesters && !mainSpawn.spawning) {
             var newName = 'Harvester' + Game.time;
             console.log('Attempting to spawn new harvester: ' + newName);
-            if(mainSpawn.spawnCreep([WORK,CARRY,MOVE], newName, 
+            if(mainSpawn.spawnCreep(currentLevel, newName, 
                 {memory: {role: 'harvester'}}) == -6){
                 console.log('Not Enough Energy');
             }
